@@ -3,16 +3,48 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--- <script src="https://cdn.tailwindcss.com"></script> -->
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>{%block title%} {%endblock%}| Pudding</title>
     </head>
 
 
     <body>
-        {% block content %}
-        
-        {% endblock content %}
-        
+        <nav class="px-6 py-6 flex justify-between items-center border-b border-gray-400">
+            <a href="/" class="text-xl font-semibold ">Puddle</a>
+            <div class="space-x-6">
+                <a href="#" class="text-lg font-semibold hover:text-gray-500">New Items</a>
+                <a href="#" class="text-lg font-semibold hover:text-gray-500">Browse</a>
+
+                <a href="#" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a>
+                <a href="#" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Signup</a>
+            </div>                
+        </nav>
+
+
+        <div class="px-6 py-6">
+            {% block content %}
+            
+            {% endblock content %}
+        </div>
+
+        <footer class="px-6 py-6 flex justify-between bg-gray-800 ">
+            <!--- mb-auto   h-screen-->
+            <div class="w-2/3 pr-10">
+                <h3 class="mb-5 font-semibold text-gray-400">About</h3>
+                <p class="text-lg text-gray-400">Online marketplace project made with Django and Tailwindcss.</p>
+            </div>
+
+            <div class="w-1/3 pl-10 ">
+                <h3 class="mb-5 font-semibold text-gray-400">About</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-lg font-semibold hover:text-teal-700 text-teal-500">About</a></li>
+                    <li><a href="{% url 'contact'%}" class="text-lg font-semibold hover:text-teal-700 text-teal-500">Contact</a></li>
+                    <li><a href="#" class="text-lg font-semibold hover:text-teal-700 text-teal-500">Privace Policy</a></li>
+                    <li><a href="#" class="text-lg font-semibold hover:text-teal-700 text-teal-500">Terms of use</a></li>
+
+                </ul>
+            </div>
+        </footer>
     </body>
 
 </html>
