@@ -18,11 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import index
-from django.urls import include
+from core.views import contact
+# from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", index, name="index")
+    path("", index, name="index"),
+    path("contact/", contact, name="contact")
     # path('puddle/', include('idx')),
     
 ]
