@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from core.views import index
-from core.views import contact
+# from core.views import index
+# from core.views import contact
 # from django.urls import include
 
 #Shouldn't be done in production!
@@ -12,8 +12,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('items/', include('item.urls')),
-    path("", index, name="index"),
-    path("contact/", contact, name="contact")
+    path("", include('core.urls')),
+    # path("contact/", contact, name="contact")
     # path('puddle/', include('idx')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

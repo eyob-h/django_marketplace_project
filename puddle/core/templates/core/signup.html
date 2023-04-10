@@ -1,0 +1,47 @@
+{%extends 'core/base.html'%}
+
+{%block title%} Signup {%endblock%}
+
+{%block content%}
+<div class="w-1/2 my-6 mx-auto bg-gray-100 p-6 rounded-xl">
+    <h1 class="mb-6 text-3xl"> Sign up</h1>
+
+    <form action="." method="post">
+        {%csrf_token%}
+        {% comment %} {{form.as_p}} {% endcomment %}
+       
+
+        <div class="mb-4">
+            <label class="inline-block mb-2">Username</label></br>
+            {{form.username}}
+        </div>
+
+        <div class="mb-4">
+            <label class="inline-block mb-2">Email</label></br> 
+            {{form.email}}
+        </div>
+
+        <div class="mb-4">
+            <label class="inline-block mb-2">Password</label><br>
+            {{form.password1}}
+        </div>
+
+        <div class="mb-4">
+            <label class="inline-block mb-2">Confirm Password</label></br>
+            {{form.password2}}
+        </div>
+        <button class="py-3 px-7 text-lg bg-red-500 hover:bg-red-600 rounded-xl text-white"> Submit </button>
+        {% if form.errors or form.non_field_errors%}
+            <div class="rounded-xl bg-red-100 mb-3 p-6">
+                {%for field in form%}
+                    {{ field.errors }}
+                {%endfor%}
+
+                {{form.non_field_errors}}
+            </div>
+        {%endif%}
+
+    </form>
+
+</div>
+{%endblock%}
