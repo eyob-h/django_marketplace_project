@@ -24,6 +24,28 @@
 
 </div>
 
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center font-bold">Related Items</h2>
+    <div class="grid grid-cols-4 gap-4">
+        {%for r_item in related_items%}
+            <div>
+                <a href="{% url 'item:detail' r_item.id %}">
+
+                    <img src="{{r_item.image.url}}" class="rounded-t-xl">
+                
+            
+
+            <div class="p-6 bg-white rounded-b-xl">
+                <h2 class="text-2xl">{{ r_item.name}}</h2>
+                
+
+            </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div> 
+
 
 
 {%endblock%}
