@@ -24,8 +24,7 @@ class NewItemForm(forms.ModelForm):
             'image': forms.FileInput(attrs={
                 'class': INPUT_CLASSES
             })
-            # 'image':forms.FileInput(attrs={
-            #     'class':INPUT_CLASSES}),
+            
             
             
         }
