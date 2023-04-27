@@ -7,6 +7,19 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Item, Category
 from .forms import NewItemForm, EditItemForm
+
+def items(request):
+    query = request.GET.get('query','')
+    items = Item.objects.filter(is_sold = False)
+    
+    if query:
+        items = items.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        
+    return render(request, 'item/items.html', {
+        'items': items,
+        'query':query, 
+    })
+
 def detail(request, pk):
     item = get_object_or_404(Item, pk=pk)
     related_items = Item.objects.filter(category = item.category, is_sold = False).exclude(pk=pk)[0:3]
