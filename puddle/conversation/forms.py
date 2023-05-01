@@ -8,7 +8,7 @@ class ConversationMessageForm(forms.ModelForm):
     
     class Meta:
         model = ConversationMessage
-        fields = ('content')
+        fields = ('content',)
         widgets = {
                         
             'content':forms.Textarea(attrs={
