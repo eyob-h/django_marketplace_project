@@ -5,6 +5,8 @@ from django.shortcuts import get_object_or_404
 from item.models import Item
 from .forms import ConversationMessageForm
 from .models import Conversation
+
+
 def new_conversation(request, item_pk):
     item = get_object_or_404(Item, pk=item_pk)
     
@@ -22,7 +24,7 @@ def new_conversation(request, item_pk):
         if form.is_valid():
             conversation = Conversation.objects.create(item=item)
             conversation.members.add(request.user)
-            conversations.members.add(item.created_by)
+            conversation.members.add(item.created_by)
             conversation.save()
             
             conversation_message = form.save(commit=False)
@@ -31,9 +33,9 @@ def new_conversation(request, item_pk):
             conversation_message.save()
             
             return redirect('item:detail',pk=item_pk)
-        else:
-            form = ConversationMessageForm()
+    else:
+        form = ConversationMessageForm()
             
-        return render(request, 'conversation/new.html',{
-            'form':form
-        }) 
+    return render(request, 'conversation/new.html',{
+        'form':form
+    }) 
